@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI technology and how it work</title>
+  <meta name="description" content="Professional overview: AI technology and how it works — clear, concise, and suitable for technical audiences." />
+  <style>
+    :root{
+      --brand:#0d47a1;
+      --muted:#6b7280;
+      --bg:#f7f9fc;
+      --surface:#ffffff;
+      --glass:rgba(255,255,255,0.6);
+      --radius:12px;
+      --max-width:1100px;
+      --accent:#0ea5e9;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:#0f172a; line-height:1.6}
+    .container{max-width:var(--max-width);margin:40px auto;padding:24px}
+    header.site-header{display:flex;align-items:center;gap:20px;justify-content:space-between;padding:28px;border-radius:14px;background:linear-gradient(90deg,var(--brand),#1565c0);color:#fff;box-shadow:0 6px 20px rgba(13,71,161,0.14)}
+    header .brand{display:flex;gap:16px;align-items:center}
+    header h1{font-size:1.25rem;margin:0}
+    header p{margin:0;opacity:0.9}
+
+    nav.main-nav{display:flex;gap:12px}
+    .btn{background:rgba(255,255,255,0.12);border:0;padding:8px 12px;border-radius:10px;color:#fff;cursor:pointer;font-weight:600}
+
+    main{display:grid;grid-template-columns:1fr 340px;gap:24px;margin-top:28px}
+    .card{background:var(--surface);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+    .hero{padding:28px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.5),rgba(255,255,255,0.3));}
+    h2{color:var(--brand);margin-top:0}
+    h3{margin:0 0 8px 0}
+    .muted{color:var(--muted)}
+
+    .toc{position:sticky;top:28px}
+    .toc ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+    .toc a{display:block;padding:8px;border-radius:8px;text-decoration:none;color:var(--brand);background:linear-gradient(90deg, rgba(14,165,233,0.06), transparent);}
+
+    section.content-section{margin-bottom:18px}
+    .lead{font-size:1rem;color:#0b1320;margin-bottom:12px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .metrics{display:flex;gap:12px;flex-wrap:wrap}
+    .metric{background:linear-gradient(180deg,var(--glass),rgba(255,255,255,0.4));padding:12px;border-radius:10px;flex:1;min-width:140px}
+
+    footer{margin-top:36px;text-align:center;color:var(--muted);font-size:14px}
+
+    pre{background:#0b1220;color:#e6eef8;padding:12px;border-radius:8px;overflow:auto;font-family:var(--mono);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){main{grid-template-columns:1fr} .toc{position:static}}
+    @media (max-width:520px){header{flex-direction:column;align-items:flex-start} .grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header card">
+      <div class="brand">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="24" rx="6" fill="#fff" opacity="0.06"></rect>
+          <path d="M6 12c0-3 5-7 6-7s6 4 6 7-3 6-6 6-6-2.5-6-6z" fill="#fff" opacity="0.9"></path>
+        </svg>
+        <div>
+          <h1>AI technology and how it work</h1>
+          <p class="muted">Professional overview • concise explanation of how modern AI systems operate</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <button class="btn" onclick="document.getElementById('toc').scrollIntoView({behavior:'smooth'})">Contents</button>
+        <button class="btn" onclick="downloadHTML()">Download HTML</button>
+      </nav>
+    </header>
+
+    <main>
+      <div>
+        <article class="card hero">
+          <h2>Executive Summary</h2>
+          <p class="lead">Artificial Intelligence (AI) enables machines to perform tasks that normally require human intelligence. This document outlines how AI systems learn from data, how models are structured, how training and inference operate, and how systems are deployed and maintained in production.</p>
+          <div class="grid-2">
+            <div>
+              <h3>Core idea</h3>
+              <p class="muted">AI identifies statistical patterns in data and uses them to make predictions or decisions. It is not conscious — its behavior emerges from optimization of mathematical objectives.</p>
+            </div>
+            <div>
+              <h3>Applications</h3>
+              <ul class="muted">
+                <li>Computer vision (image recognition)</li>
+                <li>Natural language processing (chatbots, summarization)</li>
+                <li>Recommendation systems</li>
+                <li>Autonomous systems (robots, vehicles)</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <section id="data" class="card content-section">
+          <h2>1. AI Learns From Data</h2>
+          <p class="muted">Data is the fundamental input for any AI system. Models learn patterns and relationships by observing large collections of examples.</p>
+          <ul>
+            <li><strong>Types of data:</strong> images, text, audio, video, structured records.</li>
+            <li><strong>Quality matters:</strong> diverse and accurate data reduces bias and improves robustness.</li>
+          </ul>
+        </section>
+
+        <section id="model" class="card content-section">
+          <h2>2. The Model — Core Structure</h2>
+          <p class="muted">A model is a parameterized mathematical function that maps inputs to outputs. Modern models include neural networks (CNNs, transformers) that can represent highly nonlinear relationships.</p>
+          <div class="metrics">
+            <div class="metric"><strong>Parameters</strong><div class="muted">Millions to hundreds of billions</div></div>
+            <div class="metric"><strong>Architectures</strong><div class="muted">CNN, RNN, Transformer, GNN</div></div>
+            <div class="metric"><strong>Purpose</strong><div class="muted">Pattern recognition & prediction</div></div>
+          </div>
+        </section>
+
+        <section id="training" class="card content-section">
+          <h2>3. Training — How the Model Learns</h2>
+          <p class="muted">Training optimizes model parameters to minimize a loss function that quantifies prediction error. Key steps include forward pass, loss computation, backpropagation, and parameter update via optimizers (SGD, Adam).</p>
+          <ol>
+            <li><strong>Forward pass:</strong> input → prediction.</li>
+            <li><strong>Loss computation:</strong> measure error vs. ground truth.</li>
+            <li><strong>Backpropagation:</strong> compute gradients.</li>
+            <li><strong>Optimization:</strong> update parameters to reduce loss.</li>
+          </ol>
+        </section>
+
+        <section id="inference" class="card content-section">
+          <h2>4. Inference — Applying Learned Knowledge</h2>
+          <p class="muted">Inference uses trained parameters to make predictions on new data. It requires lower compute than training but must be optimized for latency and throughput in production.</p>
+        </section>
+
+        <section id="eval" class="card content-section">
+          <h2>5. Evaluation & Optimization</h2>
+          <p class="muted">Models are validated with metrics appropriate to the task (accuracy, F1, BLEU, RMSE). Continuous evaluation helps detect performance drift and guide model updates.</p>
+        </section>
+
+        <section id="deploy" class="card content-section">
+          <h2>6. Deployment</h2>
+          <p class="muted">Deployment choices (cloud vs edge) depend on latency, cost, and privacy requirements. Common optimizations include quantization, pruning, and model distillation.
+          </p>
+        </section>
+
+        <section id="summary" class="card content-section">
+          <h2>7. Summary — How AI Works</h2>
+          <p class="muted">In short: collect data → train a model to learn patterns → evaluate and optimize → deploy for inference → continue updating. AI’s behavior results from statistical learning, not human-like cognition.</p>
+        </section>
+
+        <section class="card content-section">
+          <h2>Further reading</h2>
+          <p class="muted">If you want a deeper technical dive, I can provide explanations on: attention & transformers, mathematics of backpropagation, optimization strategies, or practical deployment patterns.</p>
+        </section>
+      </div>
+
+      <aside class="toc card" id="toc">
+        <h3>Contents</h3>
+        <ul>
+          <li><a href="#data">1. AI Learns From Data</a></li>
+          <li><a href="#model">2. The Model — Core Structure</a></li>
+          <li><a href="#training">3. Training — How the Model Learns</a></li>
+          <li><a href="#inference">4. Inference — Applying Learned Knowledge</a></li>
+          <li><a href="#eval">5. Evaluation & Optimization</a></li>
+          <li><a href="#deploy">6. Deployment</a></li>
+          <li><a href="#summary">7. Summary</a></li>
+        </ul>
+        <div style="height:16px"></div>
+        <small class="muted">Tip: Use the buttons in the header to navigate or download this page.</small>
+      </aside>
+    </main>
+
+    <footer>
+      <p>© 2025 AI Technology • Generated with guidance</p>
+    </footer>
+  </div>
+
+  <script>
+    function downloadHTML(){
+      const html = document.documentElement.outerHTML;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'ai-technology-overview.html';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
